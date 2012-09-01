@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 	webcam.set_swf_url('assets/webcam/webcam.swf');
 	webcam.set_api_url('upload.php');	// The upload script
-	webcam.set_quality(80);				// JPEG Photo Quality
+	webcam.set_quality(80);	// JPEG Photo Quality
 	webcam.set_shutter_sound(true, 'assets/webcam/shutter.mp3');
 	// Generating the embed code and adding it to the page:	
 	screen.html(
@@ -24,33 +24,124 @@ $(document).ready(function(){
 	/*----------------------------------
 		Binding event listeners
 	----------------------------------*/
-
-
-	var shootEnabled = false;
-		
-	$('#shootButton').click(function(){
-		
+  
+  var shootEnabled = false;
+  var clicked = false;
+    
+  $('#shootButton1').mouseover(function(){
+    document.getElementById('mask1').style.visibility='visible'
+  });
+  $('#shootButton1').mouseout(function(){
+    if(!clicked){
+      document.getElementById('mask1').style.visibility='hidden'
+    }
+  });
+	$('#shootButton1').click(function(){
+	  clicked = (clicked) ? false : true;
 		if(!shootEnabled){
 			return false;
 		}
-		
 		webcam.freeze();
 		togglePane();
 		return false;
-		
-		// Choose hat
-		
-		
-		
 	});
 	
-	$('#cancelButton').click(function(){
+		
+  $('#shootButton2').mouseover(function(){
+    document.getElementById('mask2').style.visibility='visible'
+  });
+  $('#shootButton2').mouseout(function(){
+    if(!clicked){
+      document.getElementById('mask2').style.visibility='hidden'
+    }
+  });
+  $('#shootButton2').click(function(){
+    clicked = (clicked) ? false : true;
+  	if(!shootEnabled){
+  		return false;
+  	}
+  	webcam.freeze();
+  	togglePane();
+  	return false;
+  });
+  
+  
+  $('#shootButton3').mouseover(function(){
+    document.getElementById('mask3').style.visibility='visible'
+  });
+  $('#shootButton3').mouseout(function(){
+    if(!clicked){
+      document.getElementById('mask3').style.visibility='hidden'
+    }
+  });
+  $('#shootButton3').click(function(){
+    clicked = (clicked) ? false : true;
+  	if(!shootEnabled){
+  		return false;
+  	}
+  	webcam.freeze();
+  	togglePane();
+  	return false;
+  });
+  
+    		
+  $('#shootButton4').mouseover(function(){
+    document.getElementById('mask4').style.visibility='visible'
+  });
+  $('#shootButton4').mouseout(function(){
+    if(!clicked){
+      document.getElementById('mask4').style.visibility='hidden'
+    }
+  });
+  $('#shootButton4').click(function(){
+      clicked = (clicked) ? false : true;
+    	if(!shootEnabled){
+    		return false;
+    	}
+    	webcam.freeze();
+    	togglePane();
+    	return false;
+    });
+  
+  
+  $('#shootButton5').mouseover(function(){
+    document.getElementById('mask5').style.visibility='visible'
+  });
+  $('#shootButton5').mouseout(function(){
+    if(!clicked){
+      document.getElementById('mask5').style.visibility='hidden'
+    }
+  });
+	$('#shootButton5').click(function(){
+	    clicked = (clicked) ? false : true;
+	  	if(!shootEnabled){
+	  		return false;
+	  	}
+	  	webcam.freeze();
+	  	togglePane();
+	  	return false;
+	  });
+	
+	
+    $('#cancelButton').click(function(){
+	  clicked = false;
+	  document.getElementById('mask1').style.visibility='hidden';
+	  document.getElementById('mask2').style.visibility='hidden';
+	  document.getElementById('mask3').style.visibility='hidden';
+	  document.getElementById('mask4').style.visibility='hidden';
+	  document.getElementById('mask5').style.visibility='hidden';
 		webcam.reset();
 		togglePane();
 		return false;
 	});
 	
 	$('#uploadButton').click(function(){
+	  clicked = false;
+	  document.getElementById('mask1').style.visibility='hidden';
+	  document.getElementById('mask2').style.visibility='hidden';
+	  document.getElementById('mask3').style.visibility='hidden';
+	  document.getElementById('mask4').style.visibility='hidden';
+	  document.getElementById('mask5').style.visibility='hidden';
 		webcam.upload();
 		webcam.reset();
 		togglePane();
@@ -61,7 +152,6 @@ $(document).ready(function(){
 		if(!shootEnabled){
 			return false;
 		}
-		
 		webcam.configure('camera');
 	});
 
@@ -173,7 +263,7 @@ $(document).ready(function(){
 				
 				start = r.nextStart;
 				photos.find('a:last').hide();
-				photos.append(loadMore.html('Load More'));
+				photos.append(loadMore.html('Encore plus...'));
 			}
 			
 			// We have to re-initialize fancybox every
@@ -214,7 +304,6 @@ $(document).ready(function(){
 	function togglePane(){
 		var visible = $('#camera .buttonPane:visible:first');
 		var hidden = $('#camera .buttonPane:hidden:first');
-		
 		visible.fadeOut('fast',function(){
 			hidden.show();
 		});

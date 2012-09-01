@@ -136,7 +136,7 @@ h2{
 	height: 28px;
 	position: absolute;
 	right: 37px;
-	top: 448px;
+	top: 20px;
 	width: 30px;
 }
 
@@ -150,49 +150,44 @@ h2{
 	margin: 65px auto 0px auto;
 }
 
-#mask01{
+#mask1{
   width:520px;
 	height:370px;
 	margin: -370px auto 22px;
-  background-image: url('../img/mask/mask01.png');
+  background-image: url('../img/mask/mask1.png');
   position: relative;
-  visibility: hidden;
 }
 
-#mask02{
+#mask2{
   width:520px;
 	height:370px;
 	margin: -392px auto 22px;
-  background-image: url('../img/mask/mask02.png');
+  background-image: url('../img/mask/mask2.png');
   position: relative;
-  visibility: hidden;
 }
 
-#mask03{
+#mask3{
   width:520px;
 	height:370px;
 	margin: -392px auto 22px;
-  background-image: url('../img/mask/mask03.png');
+  background-image: url('../img/mask/mask3.png');
   position: relative;
-  visibility: hidden;
 }
 
-#mask04{
+#mask4{
   width:520px;
 	height:370px;
 	margin: -392px auto 22px;
-  background-image: url('../img/mask/mask04.png');
+  background-image: url('../img/mask/mask4.png');
   position: relative;
-  visibility: hidden;
 }
 
-#mask05{
+#mask5{
   width:520px;
 	height:370px;
 	margin: -392px auto 22px;
-  background-image: url('../img/mask/mask05.png');
+  background-image: url('../img/mask/mask5.png');
   position: relative;
-  visibility: hidden;
 }
 
 .buttonPane{
@@ -213,7 +208,7 @@ h2{
 	background:url('../img/buttons.png') no-repeat;
 	text-shadow:1px 1px 1px #277c9b;
 	color:#fff !important;
-	width:50px;
+	width:99px;
 	height:38px;
 	border:none;
 	text-decoration:none;

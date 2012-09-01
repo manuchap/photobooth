@@ -12,7 +12,6 @@ if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
 
 $folder = 'uploads/';
 $filename = md5($_SERVER['REMOTE_ADDR'].rand()).'.jpg';
-
 $original = $folder.$filename;
 
 // The JPEG snapshot is sent as raw input:

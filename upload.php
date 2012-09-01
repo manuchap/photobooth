@@ -1,10 +1,5 @@
 <?php
 
-/*
-	This file receives the JPEG snapshot
-	from webcam.swf as a POST request.
-*/
-
 // We only need to handle POST requests:
 if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
 	exit;
@@ -45,6 +40,11 @@ $original = 'uploads/original/'.$filename;
 // the image into a thumbnail:
 
 $origImage	= imagecreatefromjpeg($original);
+$stamp = imagecreatefrompng('http://photobooth:8888/assets/img/mask/mask1.png');
+$newOrig	= imagecreatetruecolor(520, 370);
+imagecopy($origImage, $stamp, 0, 0, 0, 0, 520, 370);
+imagejpeg($origImage,'uploads/original/'.$filename);
+
 $newImage	= imagecreatetruecolor(154,110);
 imagecopyresampled($newImage,$origImage,0,0,0,0,154,110,520,370); 
 

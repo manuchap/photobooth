@@ -6,15 +6,14 @@ $(document).ready(function(){
 
 	var template = '<a href="uploads/original/{src}" rel="cam" '
 		+'style="background-image:url(uploads/thumbs/{src})"></a>';
-
+		
 	/*----------------------------------
 		Setting up the web camera
 	----------------------------------*/
 
-
 	webcam.set_swf_url('assets/webcam/webcam.swf');
-	webcam.set_api_url('upload.php');	// The upload script
-	webcam.set_quality(80);	// JPEG Photo Quality
+	webcam.set_api_url('upload.php'); // The upload script
+	webcam.set_quality(80); // JPEG Photo Quality
 	webcam.set_shutter_sound(true, 'assets/webcam/shutter.mp3');
 	// Generating the embed code and adding it to the page:	
 	screen.html(
@@ -41,11 +40,11 @@ $(document).ready(function(){
 		if(!shootEnabled){
 			return false;
 		}
+		setCookie('mask', 'mask1.png');
 		webcam.freeze();
 		togglePane();
 		return false;
 	});
-	
 		
   $('#shootButton2').mouseover(function(){
     document.getElementById('mask2').style.visibility='visible'
@@ -60,11 +59,11 @@ $(document).ready(function(){
   	if(!shootEnabled){
   		return false;
   	}
+		setCookie('mask', 'mask2.png');
   	webcam.freeze();
   	togglePane();
   	return false;
   });
-  
   
   $('#shootButton3').mouseover(function(){
     document.getElementById('mask3').style.visibility='visible'
@@ -80,10 +79,10 @@ $(document).ready(function(){
   		return false;
   	}
   	webcam.freeze();
+		setCookie('mask', 'mask3.png');
   	togglePane();
   	return false;
   });
-  
     		
   $('#shootButton4').mouseover(function(){
     document.getElementById('mask4').style.visibility='visible'
@@ -94,15 +93,15 @@ $(document).ready(function(){
     }
   });
   $('#shootButton4').click(function(){
-      clicked = (clicked) ? false : true;
-    	if(!shootEnabled){
-    		return false;
-    	}
-    	webcam.freeze();
-    	togglePane();
-    	return false;
+    clicked = (clicked) ? false : true;
+  	if(!shootEnabled){
+  		return false;
+  	}
+  	webcam.freeze();
+		setCookie('mask', 'mask4.png');
+  	togglePane();
+  	return false;
     });
-  
   
   $('#shootButton5').mouseover(function(){
     document.getElementById('mask5').style.visibility='visible'
@@ -113,17 +112,17 @@ $(document).ready(function(){
     }
   });
 	$('#shootButton5').click(function(){
-	    clicked = (clicked) ? false : true;
-	  	if(!shootEnabled){
-	  		return false;
-	  	}
-	  	webcam.freeze();
-	  	togglePane();
-	  	return false;
+    clicked = (clicked) ? false : true;
+  	if(!shootEnabled){
+  		return false;
+  	}
+  	webcam.freeze();
+		setCookie('mask', 'mask5.png');
+  	togglePane();
+  	return false;
 	  });
 	
-	
-    $('#cancelButton').click(function(){
+  $('#cancelButton').click(function(){
 	  clicked = false;
 	  document.getElementById('mask1').style.visibility='hidden';
 	  document.getElementById('mask2').style.visibility='hidden';
@@ -179,12 +178,16 @@ $(document).ready(function(){
 	$('.tooltip').mouseenter(function(){
 		$(this).fadeOut('fast');
 	});
-
+	
+	function setCookie(sName, sValue) {
+    var today = new Date(), expires = new Date();
+    expires.setTime(today.getTime() + (60*1000));
+    document.cookie = sName + "=" + encodeURIComponent(sValue) + ";expires=" + expires.toGMTString();
+	}
 
 	/*---------------------- 
 		Callbacks
 	----------------------*/
-	
 	
 	webcam.set_hook('onLoad',function(){
 		// When the flash loads, enable
@@ -213,7 +216,6 @@ $(document).ready(function(){
 	webcam.set_hook('onError',function(e){
 		screen.html(e);
 	});
-	
 	
 	/*-------------------------------------
 		Populating the page with images
@@ -279,12 +281,10 @@ $(document).ready(function(){
 	// populate the page onload:
 	
 	loadPics();
-	
 
 	/*----------------------
 		Helper functions
 	------------------------*/
-
 	
 	// This function initializes the
 	// fancybox lightbox script.
@@ -297,7 +297,6 @@ $(document).ready(function(){
 		});
 	}
 
-
 	// This function toggles the two
 	// .buttonPane divs into visibility:
 	
@@ -308,7 +307,6 @@ $(document).ready(function(){
 			hidden.show();
 		});
 	}
-	
 	
 	// Helper function for replacing "{KEYWORD}" with
 	// the respectful values of an object:

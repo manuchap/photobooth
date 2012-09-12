@@ -40,7 +40,7 @@ $original = 'uploads/original/'.$filename;
 // the image into a thumbnail:
 
 $origImage	= imagecreatefromjpeg($original);
-$stamp = imagecreatefrompng('http://photobooth:8888/assets/img/mask/mask1.png');
+$stamp = imagecreatefrompng('http://photobooth:8888/assets/img/mask/'.$_COOKIE['mask']);
 $newOrig	= imagecreatetruecolor(520, 370);
 imagecopy($origImage, $stamp, 0, 0, 0, 0, 520, 370);
 imagejpeg($origImage,'uploads/original/'.$filename);

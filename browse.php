@@ -56,7 +56,7 @@ if(isset($_GET['start']) && strlen($_GET['start'])>1){
 
 $nextStart = '';
 
-if($names[$start+$perPage]){
+if(count($names)>$perPage) {
 	$nextStart = $names[$start+$perPage];
 }
 

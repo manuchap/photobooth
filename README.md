@@ -1,3 +1,3 @@
 # photobooth
-Tutorialzine's photobooth implementing masks
+Tutorialzine's photobooth implementing masks.
 demo: http://foughali.studiowan.fr
